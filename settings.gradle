@@ -1,1 +1,3 @@
 include ':mobile'
+include ':server'
+include ':generator'

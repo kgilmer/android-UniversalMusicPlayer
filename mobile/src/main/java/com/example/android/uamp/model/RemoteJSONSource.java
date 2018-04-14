@@ -41,7 +41,7 @@ public class RemoteJSONSource implements MusicProviderSource {
     private static final String TAG = LogHelper.makeLogTag(RemoteJSONSource.class);
 
     protected static final String CATALOG_URL =
-        "http://storage.googleapis.com/automotive-media/music.json";
+        "http://45.24.94.97:8080/music.json";
 
     private static final String JSON_MUSIC = "music";
     private static final String JSON_TITLE = "title";
@@ -59,8 +59,10 @@ public class RemoteJSONSource implements MusicProviderSource {
         try {
             int slashPos = CATALOG_URL.lastIndexOf('/');
             String path = CATALOG_URL.substring(0, slashPos + 1);
+            LogHelper.d(TAG, "KGWH loading tracks...");
             JSONObject jsonObj = fetchJSONFromUrl(CATALOG_URL);
             ArrayList<MediaMetadataCompat> tracks = new ArrayList<>();
+
             if (jsonObj != null) {
                 JSONArray jsonTracks = jsonObj.getJSONArray(JSON_MUSIC);
 
@@ -70,6 +72,7 @@ public class RemoteJSONSource implements MusicProviderSource {
                     }
                 }
             }
+            LogHelper.d(TAG, "KGWH loaded tracks: " + tracks.size());
             return tracks.iterator();
         } catch (JSONException e) {
             LogHelper.e(TAG, e, "Could not retrieve music list");
