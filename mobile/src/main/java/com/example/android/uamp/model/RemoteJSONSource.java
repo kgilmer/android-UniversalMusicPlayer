@@ -59,7 +59,6 @@ public class RemoteJSONSource implements MusicProviderSource {
         try {
             int slashPos = CATALOG_URL.lastIndexOf('/');
             String path = CATALOG_URL.substring(0, slashPos + 1);
-            LogHelper.d(TAG, "KGWH loading tracks...");
             JSONObject jsonObj = fetchJSONFromUrl(CATALOG_URL);
             ArrayList<MediaMetadataCompat> tracks = new ArrayList<>();
 
@@ -72,7 +71,6 @@ public class RemoteJSONSource implements MusicProviderSource {
                     }
                 }
             }
-            LogHelper.d(TAG, "KGWH loaded tracks: " + tracks.size());
             return tracks.iterator();
         } catch (JSONException e) {
             LogHelper.e(TAG, e, "Could not retrieve music list");
