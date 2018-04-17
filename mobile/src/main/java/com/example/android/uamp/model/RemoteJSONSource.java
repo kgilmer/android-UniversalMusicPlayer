@@ -41,7 +41,7 @@ public class RemoteJSONSource implements MusicProviderSource {
     private static final String TAG = LogHelper.makeLogTag(RemoteJSONSource.class);
 
     protected static final String CATALOG_URL =
-        "http://45.24.94.97:8080/music.json";
+        "http://<Your Server Address or IP here>/music.json";
 
     private static final String JSON_MUSIC = "music";
     private static final String JSON_TITLE = "title";
